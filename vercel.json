@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "server.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    // Sirf API route ko server.js par bhejo
+    {
+      "src": "/send-email",
+      "dest": "server.js",
+      "methods": ["POST"]
+    },
+    // Baaki sabhi requests ko Vercel ka default static handler serve karega
+    {
+      "src": "/(.*)",
+      "dest": "/public/$1"
+    }
+  ]
+}
